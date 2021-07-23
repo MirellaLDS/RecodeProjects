@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class TelaDeRespostaActivity extends AppCompatActivity {
+public class Tela2Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +21,7 @@ public class TelaDeRespostaActivity extends AppCompatActivity {
 
     }
 
-    public void abrirTelaMensagem(View view) {
+    public void abrirTela1(View view) {
 
         TextView textView = findViewById(R.id.edResposta);
 

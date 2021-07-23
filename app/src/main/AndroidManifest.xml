@@ -9,10 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HelloAndroid">
-        <activity android:name=".TelaDeRespostaActivity"
+        <activity android:name=".Tela2Activity"
             android:label="TelaDeResposta - Tela 2"
-            android:parentActivityName=".TelaDeMensagemActivity"></activity>
-        <activity android:name=".TelaDeMensagemActivity"
+            android:parentActivityName=".Tela1Activity"></activity>
+        <activity android:name=".Tela1Activity"
             android:label="TelaDeMensagem - Tela 1">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
