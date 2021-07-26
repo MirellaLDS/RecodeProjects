@@ -14,6 +14,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Utilitaria.getListFullName();
+
         Log.i(TAG, "onCreate");
 
         // Inicializar referências de objetos e componentes
