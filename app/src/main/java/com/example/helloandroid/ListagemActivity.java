@@ -19,10 +19,12 @@ public class ListagemActivity extends AppCompatActivity {
 
         ListView listView = findViewById(R.id.lvListagem);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, getListShortName());
+//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+//                android.R.layout.simple_list_item_1, android.R.id.text1, getListShortName());
 
-        listView.setAdapter(adapter);
+        ArrayAdapter<String> test = new ListagemAdapter(this, R.layout.item_listagem, getListShortName());
+
+        listView.setAdapter(test);
 
         listView.setOnItemClickListener((adapterView, view, position, id) -> {
 
