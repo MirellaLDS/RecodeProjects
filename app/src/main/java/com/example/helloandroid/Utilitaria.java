@@ -13,7 +13,7 @@ public abstract class Utilitaria {
         return new ArrayList<>(mapOfState().keySet());
     }
 
-    private static HashMap<String, String> mapOfState() {
+    public static HashMap<String, String> mapOfState() {
         HashMap<String, String> estados = new HashMap<>();
         estados.put("AC", "Acre");
         estados.put("AL", "Alagoas");
