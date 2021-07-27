@@ -40,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState != null) {
             String revenue = savedInstanceState.getString(KEY, "Nada foi recuperado");
             Log.d(TAG, "Valor recuperado: " + revenue);
+
+            textView = findViewById(R.id.tvCampoDeTexto);
+            textView.setText(revenue);
         }
     }
 

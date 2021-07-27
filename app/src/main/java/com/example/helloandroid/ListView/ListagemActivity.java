@@ -1,4 +1,4 @@
-package com.example.helloandroid;
+package com.example.helloandroid.ListView;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -6,6 +6,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.helloandroid.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,12 +21,12 @@ public class ListagemActivity extends AppCompatActivity {
 
         ListView listView = findViewById(R.id.lvListagem);
 
-//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-//                android.R.layout.simple_list_item_1, android.R.id.text1, getListShortName());
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1, android.R.id.text1, getListShortName());
 
         ArrayAdapter<String> test = new ListagemAdapter(this, R.layout.item_listagem, getListShortName());
 
-        listView.setAdapter(test);
+        listView.setAdapter(adapter);
 
         listView.setOnItemClickListener((adapterView, view, position, id) -> {
 
