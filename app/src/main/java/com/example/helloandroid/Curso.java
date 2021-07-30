@@ -2,11 +2,13 @@ package com.example.helloandroid;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+
 @JsonIgnoreProperties("allocations")
 public class Curso {
 
     private int id;
     private String name;
+    private Allocation allocations;
 
 
     public int getId() {
@@ -25,4 +27,11 @@ public class Curso {
         this.name = name;
     }
 
+    public Allocation getAllocations() {
+        return allocations;
+    }
+
+    public void setAllocations(Allocation allocations) {
+        this.allocations = allocations;
+    }
 }

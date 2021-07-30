@@ -4,6 +4,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +19,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
+
+    private Curso curso = new Curso();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void executarRequest(View view) {
+    public void getByIdRequest(View view) {
 
         EditText editText = findViewById(R.id.edBuscar);
         int identificador = Integer.parseInt(editText.getText().toString());
@@ -63,9 +66,13 @@ public class MainActivity extends AppCompatActivity {
         ligacao.enqueue(new Callback<Curso>() {
             @Override
             public void onResponse(Call<Curso> call, Response<Curso> response) {
-                Curso curso = response.body();
+                curso = response.body();
                 TextView textView = findViewById(R.id.textView);
                 textView.setText(curso.getName());
+
+                Button btAtualizar = findViewById(R.id.btAtualizar);
+                btAtualizar.setVisibility(View.VISIBLE);
+
             }
 
             @Override
@@ -73,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Deu erro isso aqui!", Toast.LENGTH_LONG).show();
             }
         });
+
+        editText.setText("");
     }
 
     public void pegarTodos(View view) {
@@ -80,5 +89,67 @@ public class MainActivity extends AppCompatActivity {
         Call<List<Curso>> ligacao = new RetrofitConfig().getCursoService().getTodosCursos();
         getAll(ligacao);
 
+    }
+
+    public void createRequest(View view) {
+
+        Button btUpdate = findViewById(R.id.btAtualizar);
+        btUpdate.setVisibility(View.INVISIBLE);
+
+        EditText edTela = findViewById(R.id.edBuscar);
+        String valor = edTela.getText().toString();
+
+        Curso novoCurso = new Curso();
+        novoCurso.setName(valor);
+
+        Call<Curso> ligacao = new RetrofitConfig().getCursoService().create(novoCurso);
+
+        ligacao.enqueue(new Callback<Curso>() {
+            @Override
+            public void onResponse(Call<Curso> call, Response<Curso> response) {
+                if (response.isSuccessful()) {
+                    Curso curso = response.body();
+                    TextView textView = findViewById(R.id.textView);
+                    textView.setText("Tudo ocorreu bem! Curso cadastado. Id: " + curso.getId());
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Curso> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "Erro!!!", Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+    }
+
+    public void updateRequest(View view) {
+
+        EditText editText = findViewById(R.id.edBuscar);
+        curso.setName(editText.getText().toString());
+
+        Call<Curso> ligacao = new RetrofitConfig().getCursoService().update(curso.getId(), curso);
+
+        ligacao.enqueue(new Callback<Curso>() {
+            @Override
+            public void onResponse(Call<Curso> call, Response<Curso> response) {
+
+                Curso novoValor = response.body();
+
+                TextView textView = findViewById(R.id.textView);
+                textView.setText("O nome é: " + novoValor.getName());
+
+            }
+
+            @Override
+            public void onFailure(Call<Curso> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "Deu erro isso aqui!", Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
+
+    public void deleteRequest(View view) {
     }
 }
