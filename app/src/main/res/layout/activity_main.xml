@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".CursoActivity">
 
     <EditText
         android:id="@+id/edBuscar"
@@ -43,7 +43,6 @@
         android:id="@+id/btBuscarTodos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="pegarTodos"
         android:text="pegar Todos"
         app:layout_constraintTop_toBottomOf="@id/btAtualizar" />
 
@@ -53,7 +52,7 @@
         android:layout_height="wrap_content"
         android:onClick="deleteRequest"
         android:text="Apagar"
-        app:layout_constraintTop_toBottomOf="@id/btAtualizar" />
+        app:layout_constraintTop_toBottomOf="@id/btBuscarTodos" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"

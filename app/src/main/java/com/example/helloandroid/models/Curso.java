@@ -1,14 +1,15 @@
-package com.example.helloandroid;
+package com.example.helloandroid.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.io.Serializable;
+import java.util.List;
 
 
-@JsonIgnoreProperties("allocations")
-public class Curso {
+//@JsonIgnoreProperties("allocations")
+public class Curso implements Serializable {
 
     private int id;
     private String name;
-    private Allocation allocations;
+    private List<Allocation> allocations;
 
 
     public int getId() {
@@ -27,11 +28,11 @@ public class Curso {
         this.name = name;
     }
 
-    public Allocation getAllocations() {
+    public List<Allocation> getAllocations() {
         return allocations;
     }
 
-    public void setAllocations(Allocation allocations) {
+    public void setAllocations(List<Allocation> allocations) {
         this.allocations = allocations;
     }
 }

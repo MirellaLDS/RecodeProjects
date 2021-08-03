@@ -1,4 +1,6 @@
-package com.example.helloandroid;
+package com.example.helloandroid.services;
+
+import com.example.helloandroid.models.Curso;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.helloandroid;
+package com.example.helloandroid.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -6,10 +6,14 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Allocation {
 
     private int id;
-    private String name;
     private String dayOfWeek;
     private int startHour;
     private int endHour;
+    private Curso course = new Curso();
+    private Professor professor = new Professor();
+
+    public Allocation() {
+    }
 
     public int getId() {
         return id;
@@ -19,21 +23,13 @@ public class Allocation {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getDayOfWeek() {
+        return dayOfWeek;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDayOfWeek(String dayOfWeek) {
+        this.dayOfWeek = dayOfWeek;
     }
-
-//    public String getDayOfWeek() {
-//        return dayOfWeek;
-//    }
-//
-//    public void setDayOfWeek(String dayOfWeek) {
-//        this.dayOfWeek = dayOfWeek;
-//    }
 
     public int getStartHour() {
         return startHour;
@@ -49,5 +45,21 @@ public class Allocation {
 
     public void setEndHour(int endHour) {
         this.endHour = endHour;
+    }
+
+    public Curso getCourse() {
+        return course;
+    }
+
+    public void setCourse(Curso course) {
+        this.course = course;
+    }
+
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
     }
 }
