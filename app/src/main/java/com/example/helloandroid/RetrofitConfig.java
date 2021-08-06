@@ -9,13 +9,9 @@ public class RetrofitConfig {
 
     public RetrofitConfig() {
         this.retrofit = new Retrofit.Builder()
-                .baseUrl("https://professor-allocation.herokuapp.com/")
+                .baseUrl("https://api.github.com/")
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();
-    }
-
-    public CursoService getCursoService() {
-        return retrofit.create(CursoService.class);
     }
 
 }
