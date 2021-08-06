@@ -1,11 +1,22 @@
 package com.example.helloandroid.models;
 
+
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Professor {
 
+    @PrimaryKey
+    @ColumnInfo(name = "identificador")
     private int id;
     private String name;
     private String cpf;
-    private Departamento departament = new Departamento();
+    private int departamento;
+
+//    @Ignore
+//    @Embedded public Departamento departament = new Departamento();
 
     public Professor() {
     }
@@ -13,7 +24,7 @@ public class Professor {
     public Professor(String name, String cpf, Departamento departament) {
         this.name = name;
         this.cpf = cpf;
-        this.departament = departament;
+//        this.departament = departament;
     }
 
     @Override
@@ -45,7 +56,19 @@ public class Professor {
         this.cpf = cpf;
     }
 
-    public Departamento getDepartament() {
-        return departament;
-    }
+//    public Departamento getDepartament() {
+//        return departament;
+//    }
+//
+//    public void setDepartament(Departamento departament) {
+//        this.departament = departament;
+//    }
+
+//    public int getDepartamentId() {
+//        return departamentId;
+//    }
+//
+//    public void setDepartamentId(int departamentId) {
+//        this.departamentId = departamentId;
+//    }
 }

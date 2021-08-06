@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.helloandroid.DAO.ProfessorDAO;
+import com.example.helloandroid.commons.DatabaseConfig;
 import com.example.helloandroid.models.Professor;
 import com.example.helloandroid.presenter.ProfessorPresenter;
 import com.example.helloandroid.presenter.ResultInterface;
@@ -46,14 +48,17 @@ public class ProfessorActivity extends AppCompatActivity {
 
             startActivity(intent);
 
-//            Toast.makeText(getApplicationContext(), "Item " + professor.getName() + " clicado", Toast.LENGTH_LONG).show();
-
         });
 
         presenter.getAll(new ResultInterface() {
             @Override
             public <T> void sucesso(T requestResult) {
                 List<Professor> list = (List<Professor>) requestResult;
+
+                DatabaseConfig databaseConfig = DatabaseConfig.getInstance(getApplicationContext());
+                ProfessorDAO dao = databaseConfig.professorDAO();
+                dao.cadastrar(list);
+
 
                 adapter.addAll(list);
                 textView.setVisibility(View.GONE);

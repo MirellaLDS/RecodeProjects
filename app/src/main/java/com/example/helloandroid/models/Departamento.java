@@ -1,10 +1,18 @@
 package com.example.helloandroid.models;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.io.Serializable;
 
+@Entity
 public class Departamento implements Serializable {
 
+    @PrimaryKey
+    @ColumnInfo(name = "idDepartamento")
     private int id;
+    @ColumnInfo(name = "nomeDepartamento")
     private String name;
 
     public Departamento() {
